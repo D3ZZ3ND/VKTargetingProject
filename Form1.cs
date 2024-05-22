@@ -21,20 +21,35 @@ namespace VKTargetingProject
 {
     public partial class Form1 : MaterialForm
     {
+        /// <summary>
+        /// Список валидных аккаунтов.
+        /// </summary>
         public List<Account> Accounts = new List<Account>();
+
+        /// <summary>
+        /// Список путей файлов для обработки.
+        /// </summary>
         public List<string> FilePaths = new List<string>();
 
+        /// <summary>
+        /// Статистика.
+        /// </summary>
         public int LoadedCount = 0;
         public int ActiveCount = 0;
         public int InactiveCount = 0;
         public int MaleCount = 0;
         public int FemaleCount = 0;
         public int TwoFACount = 0;
+        ///////////////////////
 
+        /// <summary>
+        /// Интерфейс.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
 
+            // Импорт библиотеки Material Design.
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -43,6 +58,8 @@ namespace VKTargetingProject
             buttonValidationCheck.Enabled = false;
             buttonExportSave.Enabled = false;
             buttonExportSave.Enabled = false;
+
+            // comboBox с выбором страны для экспорта.
             comboBoxCountry.Items.Add("Любая страна");
         }
 
@@ -55,7 +72,7 @@ namespace VKTargetingProject
         {
             try
             {
-
+                // Сброс визуальных элементов.
                 buttonValidationCheck.Enabled = false;
                 buttonExportSave.Enabled = false;
 
@@ -65,7 +82,9 @@ namespace VKTargetingProject
 
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
+                    // Сброс статистики.
                     LoadedCount = 0;
+
                     // Позволяет выбрать несколько файлов.
                     openFileDialog.Multiselect = true;
 
@@ -88,6 +107,7 @@ namespace VKTargetingProject
             }
             catch (Exception ex)
             {
+                // В случае ошибки - снова сброс визуальных элементов.
                 buttonValidationCheck.Enabled = false;
                 buttonExportSave.Enabled = false;
                 comboBoxCountry.Items.Clear();
@@ -106,6 +126,7 @@ namespace VKTargetingProject
         {
             try
             {
+                // Сброс визуальных элементов.
                 buttonExportSave.Enabled = false;
                 comboBoxCountry.Items.Clear();
                 comboBoxCountry.Items.Add("Любая страна");
@@ -119,24 +140,30 @@ namespace VKTargetingProject
                 MaleCount = 0;
                 FemaleCount = 0;
                 TwoFACount = 0;
+
+                // Обработка каждого файла.
                 foreach (string filePath in this.FilePaths)
                 {
                     ProcessFile(filePath);
                 }
 
+                // Вывод статистики.
                 labelAccountsActive.Text = ActiveCount.ToString();
                 labelAccountsInactive.Text = (InactiveCount - ActiveCount).ToString();
                 labelValidationAccountsMale.Text = MaleCount.ToString();
                 labelValidationAccountsFemale.Text = FemaleCount.ToString();
                 labelValidationAccountsTwoFA.Text = TwoFACount.ToString();
 
+                // Очистка таблицы с аккаунтами.
                 dataGridView1.Rows.Clear();
 
+                // Добавление каждого аккаунта в список.
                 foreach (var account in Accounts)
                 {
                     dataGridView1.Rows.Add(account.Id, account.FullName, account.Token);
                 }
 
+                // Вывод текста об успехе после валидации.
                 labelValidationWarnings.ForeColor = Color.Green;
 
                 buttonExportSave.Enabled = true;
@@ -145,11 +172,13 @@ namespace VKTargetingProject
             }
             catch (Exception ex)
             {
+                // В случае ошибки - сброс визуальных элементов.
                 comboBoxCountry.Items.Clear();
                 comboBoxCountry.Items.Add("Любая страна");
                 buttonExportSave.Enabled = false;
                 labelValidationWarnings.Text = $"{ex.Message}";
             }
+
             ////foreach (Account account in this.Accounts)
             ////{
             ////    txtResults.Text += $"ID: {account.Id}, Имя: {account.FullName}, Пол: {account.Gender}, Дата рождения: {account.BirthDate}, Страна: {account.Country}, Токен: {account.Token}{Environment.NewLine}";
@@ -165,10 +194,11 @@ namespace VKTargetingProject
         {
             try
             {
+                // Сброс визуальных элементов.
                 labelExportValidationError.ForeColor = Color.Red;
                 labelExportValidationError.Text = "";
 
-
+                // Если аккаунты не были найдены.
                 if (Accounts.Count == 0)
                 {
                     labelExportValidationError.Text = "Список аккаунтов пуст!";
@@ -234,11 +264,14 @@ namespace VKTargetingProject
                         writer.WriteLine($"{account.Id}|{account.FullName}|{account.Gender}|{account.BirthDate}|{account.Country}|{account.Token}");
                     }
                 }
+
+                // Вывод текста об успехе.
                 labelExportValidationError.ForeColor = Color.Green;
                 labelExportValidationError.Text = "Список аккаунтов сохранен!";
             }
             catch (Exception ex)
             {
+                // В случае ошибки - выводим соответсвующий текст.
                 labelExportValidationError.Text = $"Ошибка при сохранении: {ex.Message}";
             }
         }
@@ -252,18 +285,24 @@ namespace VKTargetingProject
         {
             try
             {
+                // Получениек информации о выбранной ячейке.
                 var rowIndex = dataGridView1.CurrentCell.RowIndex;
                 var columnIndex = dataGridView1.CurrentCell.ColumnIndex;
+
+                // Если ячейка найдена и не пустая.
                 if (dataGridView1.CurrentCell != null)
                 {
                     var selectedCell = dataGridView1.Rows[rowIndex].Cells[0].Value;
 
                     var selectedAccount = Accounts.FirstOrDefault(a => a.Id == (long)selectedCell);
 
+                    // Заполнение полей данными об аккаунте.
                     labelCheckName.Text = $"{selectedAccount.FullName}";
                     labelCheckGender.Text = $"{selectedAccount.Gender}";
                     labelCheckBirthDate.Text = $"{selectedAccount.BirthDate}";
                     labelCheckCountry.Text = $"{selectedAccount.Country}";
+
+                    // Данные о привязке телефона.
                     if (selectedAccount.HasMobile.HasValue && selectedAccount.HasMobile.Value)
                     {
                         labelCheckHasPhone.Text = $"True";
@@ -272,7 +311,11 @@ namespace VKTargetingProject
                     {
                         labelCheckHasPhone.Text = $"False";
                     }
+
+                    // Вывод id аккаунта.
                     labelCheckId.Text = $"{selectedAccount.Id}";
+
+                    // Вывод фото аккаунта (аватарки).
                     if (selectedAccount.Photo != null)
                     {
                         using (WebClient wc = new WebClient())
@@ -289,6 +332,7 @@ namespace VKTargetingProject
             }
             catch (Exception ex)
             {
+                // В случае ошибки - выводим текст.
                 labelExportValidationError.Text = $"{ex.Message}";
             }
         }
@@ -299,8 +343,10 @@ namespace VKTargetingProject
         /// <param name="filePath"></param>
         private void ProcessFile(string filePath)
         {
+            // Получаем все строки из файла.
             string[] lines = File.ReadAllLines(filePath);
 
+            // Проверка кажой строки.
             foreach (string line in lines)
             {
                 string token = ExtractToken(line);
@@ -336,12 +382,14 @@ namespace VKTargetingProject
 
             try
             {
+                // Авторизация.
                 api.Authorize(new ApiAuthParams { AccessToken = token });
 
-
+                // Получение информации о профиле двумя способами.
                 var user = api.Account.GetProfileInfo();
                 var currentUserFullInfo = api.Users.Get(new List<long> { }).FirstOrDefault();
 
+                // Добавление страны в фильтр, если она отмечена в профиле и ее еще нет в comboBox.
                 if (user.Country != null)
                 {
                     if (!Accounts.Any(a => a.Country == user.Country.Title))
@@ -350,12 +398,15 @@ namespace VKTargetingProject
                     }
                 }
 
+                // Проверка на привязку телефона.
                 var hasPhone = false;
 
                 if (user.Phone != null && user.Phone != "")
                 {
                     hasPhone = true;
                 }
+
+                // Получение фотографии.
                 if (api.Photo.Get(new PhotoGetParams { AlbumId = PhotoAlbumType.Profile }).Count > 0)
                 {
                     var userPhoto = api.Photo.Get(new PhotoGetParams { AlbumId = PhotoAlbumType.Profile })
@@ -386,6 +437,10 @@ namespace VKTargetingProject
                         HasMobile = hasPhone,
                     });
                 }
+                
+                // Статистика.
+
+                // пол.
                 if (user.Sex == VkNet.Enums.Sex.Male)
                 {
                     MaleCount++;
@@ -394,11 +449,14 @@ namespace VKTargetingProject
                 {
                     FemaleCount++;
                 }
+
+                // Привязка к телефону.
                 if (hasPhone)
                 {
                     TwoFACount++;
                 }
 
+                // Активный аккаунт.
                 ActiveCount++;
             }
             catch (Exception ex)

@@ -152,9 +152,8 @@
             this.labelValidationWarnings.ForeColor = System.Drawing.Color.Red;
             this.labelValidationWarnings.Location = new System.Drawing.Point(6, 244);
             this.labelValidationWarnings.Name = "labelValidationWarnings";
-            this.labelValidationWarnings.Size = new System.Drawing.Size(49, 13);
+            this.labelValidationWarnings.Size = new System.Drawing.Size(0, 13);
             this.labelValidationWarnings.TabIndex = 7;
-            this.labelValidationWarnings.Text = "aaaaaaa";
             // 
             // labelAccountsInactive
             // 
@@ -284,9 +283,8 @@
             this.labelExportValidationError.ForeColor = System.Drawing.Color.Red;
             this.labelExportValidationError.Location = new System.Drawing.Point(6, 244);
             this.labelExportValidationError.Name = "labelExportValidationError";
-            this.labelExportValidationError.Size = new System.Drawing.Size(59, 13);
+            this.labelExportValidationError.Size = new System.Drawing.Size(0, 13);
             this.labelExportValidationError.TabIndex = 4;
-            this.labelExportValidationError.Text = "fdfsfdsfds";
             // 
             // labelExportFileNameSaveText
             // 
@@ -562,7 +560,7 @@
             // comboBoxCountry
             // 
             this.comboBoxCountry.FormattingEnabled = true;
-            this.comboBoxCountry.Location = new System.Drawing.Point(65, 149);
+            this.comboBoxCountry.Location = new System.Drawing.Point(69, 149);
             this.comboBoxCountry.Name = "comboBoxCountry";
             this.comboBoxCountry.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCountry.TabIndex = 17;
