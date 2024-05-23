@@ -208,7 +208,7 @@ namespace VKTargetingProject
                 // Получаем имя файла из текстового поля
                 string fileName = $"{textBoxExportFileName.Text.Trim()}.txt";
 
-                if (string.IsNullOrEmpty(fileName))
+                if (string.IsNullOrEmpty(fileName) || fileName.Trim() == ".txt")
                 {
                     labelExportValidationError.Text = "Введите имя файла!";
                     return;
