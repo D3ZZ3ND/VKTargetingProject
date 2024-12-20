@@ -31,6 +31,8 @@ namespace VKTargetingProject
         /// </summary>
         public List<string> FilePaths = new List<string>();
 
+        public string CurrentToken {  get; set; }
+
         /// <summary>
         /// Статистика.
         /// </summary>
@@ -72,12 +74,17 @@ namespace VKTargetingProject
         {
             try
             {
+                // Сброс списка файлов.
+                FilePaths = new List<string>();
+
                 // Сброс визуальных элементов.
                 buttonValidationCheck.Enabled = false;
                 buttonExportSave.Enabled = false;
 
                 comboBoxCountry.Items.Clear();
                 comboBoxCountry.Items.Add("Любая страна");
+
+                buttonMessagesView.Visible = false;
 
 
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -126,14 +133,20 @@ namespace VKTargetingProject
         {
             try
             {
+                // Сброс списка пользователей
+                Accounts = new List<Account>();
+
                 // Сброс визуальных элементов.
                 buttonExportSave.Enabled = false;
                 comboBoxCountry.Items.Clear();
                 comboBoxCountry.Items.Add("Любая страна");
 
+                buttonMessagesView.Visible = false;
+
                 labelValidationWarnings.ForeColor = Color.Red;
                 labelValidationWarnings.Text = "Подождите, идет обработка....";
                 dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = null;
                 dataGridView1.Refresh();
                 ActiveCount = 0;
                 InactiveCount = 0;
@@ -156,6 +169,8 @@ namespace VKTargetingProject
 
                 // Очистка таблицы с аккаунтами.
                 dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = null;
+                dataGridView1.Refresh();
 
                 // Добавление каждого аккаунта в список.
                 foreach (var account in Accounts)
@@ -328,6 +343,12 @@ namespace VKTargetingProject
                         Bitmap bitmap = new Bitmap(pictureBoxCheckPhoto.Width, pictureBoxCheckPhoto.Height);
                         pictureBoxCheckPhoto.Image = bitmap;
                     }
+
+                    // Присваеваем глобальной переменной токен.
+                    this.CurrentToken = selectedAccount.Token;
+
+                    // Показ кнопки для диалогов.
+                    buttonMessagesView.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -353,6 +374,16 @@ namespace VKTargetingProject
 
                 if (!string.IsNullOrEmpty(token))
                 {
+                    ////Accounts.Add(new Account
+                    ////{
+                    ////    Id = 0,
+                    ////    FullName = "",
+                    ////    Gender = "",
+                    ////    BirthDate = "",
+                    ////    Country = "",
+                    ////    Token = token,
+                    ////    HasMobile = false,
+                    ////});
                     AuthorizeAccount(token);
                 }
             }
@@ -378,10 +409,10 @@ namespace VKTargetingProject
         /// <param name="token"></param>
         private void AuthorizeAccount(string token)
         {
-            var api = new VkApi();
-
             try
             {
+                var api = new VkApi();
+
                 // Авторизация.
                 api.Authorize(new ApiAuthParams { AccessToken = token });
 
@@ -464,6 +495,12 @@ namespace VKTargetingProject
                 // Обработка ошибок авторизации
                 Console.WriteLine($"Ошибка авторизации: {ex.Message}");
             }
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(CurrentToken);
+            form2.Show();
         }
     }
 }

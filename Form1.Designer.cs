@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelValidationAccountsTwoFA = new System.Windows.Forms.Label();
+            this.labelValidationAccountsFemale = new System.Windows.Forms.Label();
+            this.labelValidationAccountsMale = new System.Windows.Forms.Label();
+            this.labelValidationAccountsTwoFAText = new System.Windows.Forms.Label();
+            this.labelValidationAccountsFemaleText = new System.Windows.Forms.Label();
+            this.labelValidationAccountsMaleText = new System.Windows.Forms.Label();
             this.buttonValidationCheck = new MaterialSkin.Controls.MaterialButton();
             this.buttonValidationLoad = new MaterialSkin.Controls.MaterialButton();
             this.labelValidationWarnings = new System.Windows.Forms.Label();
@@ -39,6 +45,8 @@
             this.labelValidationFilesLoaded = new System.Windows.Forms.Label();
             this.labelValidationFilesLoadedText = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
+            this.checkBoxExportPhone = new System.Windows.Forms.CheckBox();
             this.buttonExportSave = new MaterialSkin.Controls.MaterialButton();
             this.checkBoxExportIsFemale = new System.Windows.Forms.CheckBox();
             this.checkBoxExportIsMale = new System.Windows.Forms.CheckBox();
@@ -47,6 +55,8 @@
             this.labelExportFileNameSaveText = new System.Windows.Forms.Label();
             this.textBoxExportFileName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelCheckId = new System.Windows.Forms.Label();
+            this.labelCheckIdText = new System.Windows.Forms.Label();
             this.pictureBoxCheckPhoto = new System.Windows.Forms.PictureBox();
             this.labelCheckHasPhone = new System.Windows.Forms.Label();
             this.labelCheckHasPhoneText = new System.Windows.Forms.Label();
@@ -64,16 +74,7 @@
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.labelValidationAccountsMaleText = new System.Windows.Forms.Label();
-            this.labelValidationAccountsFemaleText = new System.Windows.Forms.Label();
-            this.labelValidationAccountsTwoFAText = new System.Windows.Forms.Label();
-            this.labelValidationAccountsMale = new System.Windows.Forms.Label();
-            this.labelValidationAccountsFemale = new System.Windows.Forms.Label();
-            this.labelValidationAccountsTwoFA = new System.Windows.Forms.Label();
-            this.checkBoxExportPhone = new System.Windows.Forms.CheckBox();
-            this.labelCheckIdText = new System.Windows.Forms.Label();
-            this.labelCheckId = new System.Windows.Forms.Label();
-            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
+            this.buttonMessagesView = new MaterialSkin.Controls.MaterialButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -98,13 +99,67 @@
             this.groupBox1.Controls.Add(this.labelValidationAccountsActiveText);
             this.groupBox1.Controls.Add(this.labelValidationFilesLoaded);
             this.groupBox1.Controls.Add(this.labelValidationFilesLoadedText);
-            this.groupBox1.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(6, 67);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(264, 265);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Валидация аккаунтов";
+            // 
+            // labelValidationAccountsTwoFA
+            // 
+            this.labelValidationAccountsTwoFA.AutoSize = true;
+            this.labelValidationAccountsTwoFA.Location = new System.Drawing.Point(188, 216);
+            this.labelValidationAccountsTwoFA.Name = "labelValidationAccountsTwoFA";
+            this.labelValidationAccountsTwoFA.Size = new System.Drawing.Size(13, 13);
+            this.labelValidationAccountsTwoFA.TabIndex = 15;
+            this.labelValidationAccountsTwoFA.Text = "0";
+            // 
+            // labelValidationAccountsFemale
+            // 
+            this.labelValidationAccountsFemale.AutoSize = true;
+            this.labelValidationAccountsFemale.Location = new System.Drawing.Point(188, 201);
+            this.labelValidationAccountsFemale.Name = "labelValidationAccountsFemale";
+            this.labelValidationAccountsFemale.Size = new System.Drawing.Size(13, 13);
+            this.labelValidationAccountsFemale.TabIndex = 14;
+            this.labelValidationAccountsFemale.Text = "0";
+            // 
+            // labelValidationAccountsMale
+            // 
+            this.labelValidationAccountsMale.AutoSize = true;
+            this.labelValidationAccountsMale.Location = new System.Drawing.Point(188, 185);
+            this.labelValidationAccountsMale.Name = "labelValidationAccountsMale";
+            this.labelValidationAccountsMale.Size = new System.Drawing.Size(13, 13);
+            this.labelValidationAccountsMale.TabIndex = 13;
+            this.labelValidationAccountsMale.Text = "0";
+            // 
+            // labelValidationAccountsTwoFAText
+            // 
+            this.labelValidationAccountsTwoFAText.AutoSize = true;
+            this.labelValidationAccountsTwoFAText.Location = new System.Drawing.Point(6, 216);
+            this.labelValidationAccountsTwoFAText.Name = "labelValidationAccountsTwoFAText";
+            this.labelValidationAccountsTwoFAText.Size = new System.Drawing.Size(134, 13);
+            this.labelValidationAccountsTwoFAText.TabIndex = 12;
+            this.labelValidationAccountsTwoFAText.Text = "С привязкой к телефону:";
+            // 
+            // labelValidationAccountsFemaleText
+            // 
+            this.labelValidationAccountsFemaleText.AutoSize = true;
+            this.labelValidationAccountsFemaleText.Location = new System.Drawing.Point(6, 201);
+            this.labelValidationAccountsFemaleText.Name = "labelValidationAccountsFemaleText";
+            this.labelValidationAccountsFemaleText.Size = new System.Drawing.Size(56, 13);
+            this.labelValidationAccountsFemaleText.TabIndex = 11;
+            this.labelValidationAccountsFemaleText.Text = "Женских:";
+            // 
+            // labelValidationAccountsMaleText
+            // 
+            this.labelValidationAccountsMaleText.AutoSize = true;
+            this.labelValidationAccountsMaleText.Location = new System.Drawing.Point(6, 185);
+            this.labelValidationAccountsMaleText.Name = "labelValidationAccountsMaleText";
+            this.labelValidationAccountsMaleText.Size = new System.Drawing.Size(55, 13);
+            this.labelValidationAccountsMaleText.TabIndex = 10;
+            this.labelValidationAccountsMaleText.Text = "Мужских:";
             // 
             // buttonValidationCheck
             // 
@@ -169,7 +224,7 @@
             this.labelValidationAccountsInactiveText.AutoSize = true;
             this.labelValidationAccountsInactiveText.Location = new System.Drawing.Point(6, 157);
             this.labelValidationAccountsInactiveText.Name = "labelValidationAccountsInactiveText";
-            this.labelValidationAccountsInactiveText.Size = new System.Drawing.Size(123, 13);
+            this.labelValidationAccountsInactiveText.Size = new System.Drawing.Size(122, 13);
             this.labelValidationAccountsInactiveText.TabIndex = 6;
             this.labelValidationAccountsInactiveText.Text = "Не рабочих аккаунтов:";
             // 
@@ -187,7 +242,7 @@
             this.labelValidationAccountsActiveText.AutoSize = true;
             this.labelValidationAccountsActiveText.Location = new System.Drawing.Point(6, 141);
             this.labelValidationAccountsActiveText.Name = "labelValidationAccountsActiveText";
-            this.labelValidationAccountsActiveText.Size = new System.Drawing.Size(118, 13);
+            this.labelValidationAccountsActiveText.Size = new System.Drawing.Size(117, 13);
             this.labelValidationAccountsActiveText.TabIndex = 4;
             this.labelValidationAccountsActiveText.Text = "Активных  аккаунтов:";
             // 
@@ -220,13 +275,31 @@
             this.groupBox2.Controls.Add(this.labelExportValidationError);
             this.groupBox2.Controls.Add(this.labelExportFileNameSaveText);
             this.groupBox2.Controls.Add(this.textBoxExportFileName);
-            this.groupBox2.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(276, 67);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(264, 265);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Экспорт";
+            // 
+            // comboBoxCountry
+            // 
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(69, 149);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCountry.TabIndex = 17;
+            // 
+            // checkBoxExportPhone
+            // 
+            this.checkBoxExportPhone.AutoSize = true;
+            this.checkBoxExportPhone.Location = new System.Drawing.Point(52, 116);
+            this.checkBoxExportPhone.Name = "checkBoxExportPhone";
+            this.checkBoxExportPhone.Size = new System.Drawing.Size(150, 17);
+            this.checkBoxExportPhone.TabIndex = 16;
+            this.checkBoxExportPhone.Text = "С привязкой к телефону";
+            this.checkBoxExportPhone.UseVisualStyleBackColor = true;
             // 
             // buttonExportSave
             // 
@@ -289,7 +362,7 @@
             // labelExportFileNameSaveText
             // 
             this.labelExportFileNameSaveText.AutoSize = true;
-            this.labelExportFileNameSaveText.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelExportFileNameSaveText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelExportFileNameSaveText.Location = new System.Drawing.Point(83, 20);
             this.labelExportFileNameSaveText.Name = "labelExportFileNameSaveText";
             this.labelExportFileNameSaveText.Size = new System.Drawing.Size(95, 13);
@@ -300,11 +373,12 @@
             // 
             this.textBoxExportFileName.Location = new System.Drawing.Point(52, 38);
             this.textBoxExportFileName.Name = "textBoxExportFileName";
-            this.textBoxExportFileName.Size = new System.Drawing.Size(174, 21);
+            this.textBoxExportFileName.Size = new System.Drawing.Size(174, 20);
             this.textBoxExportFileName.TabIndex = 2;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.buttonMessagesView);
             this.groupBox3.Controls.Add(this.labelCheckId);
             this.groupBox3.Controls.Add(this.labelCheckIdText);
             this.groupBox3.Controls.Add(this.pictureBoxCheckPhoto);
@@ -320,13 +394,31 @@
             this.groupBox3.Controls.Add(this.labelCheckNameText);
             this.groupBox3.Controls.Add(this.labelCheckInfoText);
             this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(6, 347);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(536, 238);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Проверка аккаунтов";
+            // 
+            // labelCheckId
+            // 
+            this.labelCheckId.AutoSize = true;
+            this.labelCheckId.Location = new System.Drawing.Point(395, 136);
+            this.labelCheckId.Name = "labelCheckId";
+            this.labelCheckId.Size = new System.Drawing.Size(10, 13);
+            this.labelCheckId.TabIndex = 13;
+            this.labelCheckId.Text = "-";
+            // 
+            // labelCheckIdText
+            // 
+            this.labelCheckIdText.AutoSize = true;
+            this.labelCheckIdText.Location = new System.Drawing.Point(269, 136);
+            this.labelCheckIdText.Name = "labelCheckIdText";
+            this.labelCheckIdText.Size = new System.Drawing.Size(19, 13);
+            this.labelCheckIdText.TabIndex = 12;
+            this.labelCheckIdText.Text = "Id:";
             // 
             // pictureBoxCheckPhoto
             // 
@@ -351,7 +443,7 @@
             this.labelCheckHasPhoneText.AutoSize = true;
             this.labelCheckHasPhoneText.Location = new System.Drawing.Point(269, 116);
             this.labelCheckHasPhoneText.Name = "labelCheckHasPhoneText";
-            this.labelCheckHasPhoneText.Size = new System.Drawing.Size(54, 13);
+            this.labelCheckHasPhoneText.Size = new System.Drawing.Size(55, 13);
             this.labelCheckHasPhoneText.TabIndex = 10;
             this.labelCheckHasPhoneText.Text = "Телефон:";
             // 
@@ -432,7 +524,7 @@
             this.labelCheckInfoText.AutoSize = true;
             this.labelCheckInfoText.Location = new System.Drawing.Point(357, 14);
             this.labelCheckInfoText.Name = "labelCheckInfoText";
-            this.labelCheckInfoText.Size = new System.Drawing.Size(77, 13);
+            this.labelCheckInfoText.Size = new System.Drawing.Size(76, 13);
             this.labelCheckInfoText.TabIndex = 1;
             this.labelCheckInfoText.Text = "Информация:";
             // 
@@ -475,95 +567,26 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // labelValidationAccountsMaleText
+            // buttonMessagesView
             // 
-            this.labelValidationAccountsMaleText.AutoSize = true;
-            this.labelValidationAccountsMaleText.Location = new System.Drawing.Point(6, 185);
-            this.labelValidationAccountsMaleText.Name = "labelValidationAccountsMaleText";
-            this.labelValidationAccountsMaleText.Size = new System.Drawing.Size(56, 13);
-            this.labelValidationAccountsMaleText.TabIndex = 10;
-            this.labelValidationAccountsMaleText.Text = "Мужских:";
-            // 
-            // labelValidationAccountsFemaleText
-            // 
-            this.labelValidationAccountsFemaleText.AutoSize = true;
-            this.labelValidationAccountsFemaleText.Location = new System.Drawing.Point(6, 201);
-            this.labelValidationAccountsFemaleText.Name = "labelValidationAccountsFemaleText";
-            this.labelValidationAccountsFemaleText.Size = new System.Drawing.Size(55, 13);
-            this.labelValidationAccountsFemaleText.TabIndex = 11;
-            this.labelValidationAccountsFemaleText.Text = "Женских:";
-            // 
-            // labelValidationAccountsTwoFAText
-            // 
-            this.labelValidationAccountsTwoFAText.AutoSize = true;
-            this.labelValidationAccountsTwoFAText.Location = new System.Drawing.Point(6, 216);
-            this.labelValidationAccountsTwoFAText.Name = "labelValidationAccountsTwoFAText";
-            this.labelValidationAccountsTwoFAText.Size = new System.Drawing.Size(134, 13);
-            this.labelValidationAccountsTwoFAText.TabIndex = 12;
-            this.labelValidationAccountsTwoFAText.Text = "С привязкой к телефону:";
-            // 
-            // labelValidationAccountsMale
-            // 
-            this.labelValidationAccountsMale.AutoSize = true;
-            this.labelValidationAccountsMale.Location = new System.Drawing.Point(188, 185);
-            this.labelValidationAccountsMale.Name = "labelValidationAccountsMale";
-            this.labelValidationAccountsMale.Size = new System.Drawing.Size(13, 13);
-            this.labelValidationAccountsMale.TabIndex = 13;
-            this.labelValidationAccountsMale.Text = "0";
-            // 
-            // labelValidationAccountsFemale
-            // 
-            this.labelValidationAccountsFemale.AutoSize = true;
-            this.labelValidationAccountsFemale.Location = new System.Drawing.Point(188, 201);
-            this.labelValidationAccountsFemale.Name = "labelValidationAccountsFemale";
-            this.labelValidationAccountsFemale.Size = new System.Drawing.Size(13, 13);
-            this.labelValidationAccountsFemale.TabIndex = 14;
-            this.labelValidationAccountsFemale.Text = "0";
-            // 
-            // labelValidationAccountsTwoFA
-            // 
-            this.labelValidationAccountsTwoFA.AutoSize = true;
-            this.labelValidationAccountsTwoFA.Location = new System.Drawing.Point(188, 216);
-            this.labelValidationAccountsTwoFA.Name = "labelValidationAccountsTwoFA";
-            this.labelValidationAccountsTwoFA.Size = new System.Drawing.Size(13, 13);
-            this.labelValidationAccountsTwoFA.TabIndex = 15;
-            this.labelValidationAccountsTwoFA.Text = "0";
-            // 
-            // checkBoxExportPhone
-            // 
-            this.checkBoxExportPhone.AutoSize = true;
-            this.checkBoxExportPhone.Location = new System.Drawing.Point(52, 116);
-            this.checkBoxExportPhone.Name = "checkBoxExportPhone";
-            this.checkBoxExportPhone.Size = new System.Drawing.Size(150, 17);
-            this.checkBoxExportPhone.TabIndex = 16;
-            this.checkBoxExportPhone.Text = "С привязкой к телефону";
-            this.checkBoxExportPhone.UseVisualStyleBackColor = true;
-            // 
-            // labelCheckIdText
-            // 
-            this.labelCheckIdText.AutoSize = true;
-            this.labelCheckIdText.Location = new System.Drawing.Point(269, 136);
-            this.labelCheckIdText.Name = "labelCheckIdText";
-            this.labelCheckIdText.Size = new System.Drawing.Size(19, 13);
-            this.labelCheckIdText.TabIndex = 12;
-            this.labelCheckIdText.Text = "Id:";
-            // 
-            // labelCheckId
-            // 
-            this.labelCheckId.AutoSize = true;
-            this.labelCheckId.Location = new System.Drawing.Point(395, 136);
-            this.labelCheckId.Name = "labelCheckId";
-            this.labelCheckId.Size = new System.Drawing.Size(10, 13);
-            this.labelCheckId.TabIndex = 13;
-            this.labelCheckId.Text = "-";
-            // 
-            // comboBoxCountry
-            // 
-            this.comboBoxCountry.FormattingEnabled = true;
-            this.comboBoxCountry.Location = new System.Drawing.Point(69, 149);
-            this.comboBoxCountry.Name = "comboBoxCountry";
-            this.comboBoxCountry.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxCountry.TabIndex = 17;
+            this.buttonMessagesView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonMessagesView.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.buttonMessagesView.Depth = 0;
+            this.buttonMessagesView.HighEmphasis = true;
+            this.buttonMessagesView.Icon = null;
+            this.buttonMessagesView.Location = new System.Drawing.Point(437, 196);
+            this.buttonMessagesView.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.buttonMessagesView.MouseState = MaterialSkin.MouseState.HOVER;
+            this.buttonMessagesView.Name = "buttonMessagesView";
+            this.buttonMessagesView.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.buttonMessagesView.Size = new System.Drawing.Size(92, 36);
+            this.buttonMessagesView.TabIndex = 18;
+            this.buttonMessagesView.Text = "Диалоги";
+            this.buttonMessagesView.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.buttonMessagesView.UseAccentColor = false;
+            this.buttonMessagesView.UseVisualStyleBackColor = true;
+            this.buttonMessagesView.Visible = false;
+            this.buttonMessagesView.Click += new System.EventHandler(this.materialButton1_Click);
             // 
             // Form1
             // 
@@ -638,6 +661,7 @@
         private System.Windows.Forms.Label labelCheckId;
         private System.Windows.Forms.Label labelCheckIdText;
         private System.Windows.Forms.ComboBox comboBoxCountry;
+        private MaterialSkin.Controls.MaterialButton buttonMessagesView;
     }
 }
 
