@@ -55,6 +55,7 @@
             this.labelExportFileNameSaveText = new System.Windows.Forms.Label();
             this.textBoxExportFileName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonMessagesView = new MaterialSkin.Controls.MaterialButton();
             this.labelCheckId = new System.Windows.Forms.Label();
             this.labelCheckIdText = new System.Windows.Forms.Label();
             this.pictureBoxCheckPhoto = new System.Windows.Forms.PictureBox();
@@ -70,11 +71,10 @@
             this.labelCheckNameText = new System.Windows.Forms.Label();
             this.labelCheckInfoText = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.buttonMessagesView = new MaterialSkin.Controls.MaterialButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -402,6 +402,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Проверка аккаунтов";
             // 
+            // buttonMessagesView
+            // 
+            this.buttonMessagesView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonMessagesView.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.buttonMessagesView.Depth = 0;
+            this.buttonMessagesView.HighEmphasis = true;
+            this.buttonMessagesView.Icon = null;
+            this.buttonMessagesView.Location = new System.Drawing.Point(437, 196);
+            this.buttonMessagesView.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.buttonMessagesView.MouseState = MaterialSkin.MouseState.HOVER;
+            this.buttonMessagesView.Name = "buttonMessagesView";
+            this.buttonMessagesView.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.buttonMessagesView.Size = new System.Drawing.Size(92, 36);
+            this.buttonMessagesView.TabIndex = 18;
+            this.buttonMessagesView.Text = "Диалоги";
+            this.buttonMessagesView.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.buttonMessagesView.UseAccentColor = false;
+            this.buttonMessagesView.UseVisualStyleBackColor = true;
+            this.buttonMessagesView.Visible = false;
+            this.buttonMessagesView.Click += new System.EventHandler(this.materialButton1_Click);
+            // 
             // labelCheckId
             // 
             this.labelCheckId.AutoSize = true;
@@ -541,15 +562,21 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(261, 216);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Id
             // 
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Width = 60;
             // 
             // FullName
             // 
@@ -562,31 +589,6 @@
             this.Token.HeaderText = "Token";
             this.Token.Name = "Token";
             this.Token.ReadOnly = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // buttonMessagesView
-            // 
-            this.buttonMessagesView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonMessagesView.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.buttonMessagesView.Depth = 0;
-            this.buttonMessagesView.HighEmphasis = true;
-            this.buttonMessagesView.Icon = null;
-            this.buttonMessagesView.Location = new System.Drawing.Point(437, 196);
-            this.buttonMessagesView.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.buttonMessagesView.MouseState = MaterialSkin.MouseState.HOVER;
-            this.buttonMessagesView.Name = "buttonMessagesView";
-            this.buttonMessagesView.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.buttonMessagesView.Size = new System.Drawing.Size(92, 36);
-            this.buttonMessagesView.TabIndex = 18;
-            this.buttonMessagesView.Text = "Диалоги";
-            this.buttonMessagesView.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.buttonMessagesView.UseAccentColor = false;
-            this.buttonMessagesView.UseVisualStyleBackColor = true;
-            this.buttonMessagesView.Visible = false;
-            this.buttonMessagesView.Click += new System.EventHandler(this.materialButton1_Click);
             // 
             // Form1
             // 
@@ -625,8 +627,6 @@
         private System.Windows.Forms.Label labelValidationAccountsActiveText;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.Label labelExportFileNameSaveText;
         private System.Windows.Forms.TextBox textBoxExportFileName;
         private System.Windows.Forms.Label labelExportValidationError;
@@ -646,7 +646,6 @@
         private System.Windows.Forms.Label labelCheckHasPhone;
         private System.Windows.Forms.Label labelCheckHasPhoneText;
         private System.Windows.Forms.PictureBox pictureBoxCheckPhoto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Token;
         private System.Windows.Forms.Label labelValidationWarnings;
         private MaterialSkin.Controls.MaterialButton buttonExportSave;
         private MaterialSkin.Controls.MaterialButton buttonValidationLoad;
@@ -662,6 +661,9 @@
         private System.Windows.Forms.Label labelCheckIdText;
         private System.Windows.Forms.ComboBox comboBoxCountry;
         private MaterialSkin.Controls.MaterialButton buttonMessagesView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Token;
     }
 }
 
